@@ -1,0 +1,48 @@
+[core]
+	editor = /usr/local/bin/vim
+	hooksPath = /Users/jimp/workspace/github.com/jim80net/git-hooks-core
+	excludesfile = ~/.gitignore
+[transfer]
+	fsckobjects = true
+[alias]
+	gst = git
+	st = status
+	di = diff
+	co = checkout
+	ci = commit
+	cp = cherry-pick
+	br = branch
+	sta = stash
+	llog = log --date=local
+	flog = log --pretty=fuller --decorate
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	lol = log --graph --decorate --oneline
+	lola = log --graph --decorate --oneline --all
+	blog = log origin/master... --left-right
+	ds = diff --staged
+	fixup = commit --fixup
+	squash = commit --squash
+	unstage = reset HEAD
+	rum = rebase master@{u}
+	gst = git
+[user]
+	email = jimp@scribd.com
+	name = Jim Park
+	signingkey = 5EF3A06134D3B1CA
+[commit]
+	gpgsign = true
+[url "git@git.lo:"]
+	insteadOf = https://git.lo/
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[pull]
+	ff = only
+[credential]
+	helper = osxkeychain
+[init]
+	defaultBranch = main
