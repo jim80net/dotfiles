@@ -1,0 +1,12 @@
+
+[line_break]
+disabled = false
+
+[time]
+disabled = false
+utc_time_offset = "0"
+time_format = "%FT%TZ"
+
+[directory]
+truncation_length = 0
+truncate_to_repo = false
