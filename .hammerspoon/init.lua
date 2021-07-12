@@ -23,12 +23,13 @@ units = {
 }
 
 mash = { 'alt', 'ctrl', 'cmd' }
+voice = hs.speech.new()
 hs.hotkey.bind(mash, '1', function() hs.window.focusedWindow():move(units.upleft50,   nil, true) end)
 hs.hotkey.bind(mash, '2', function() hs.window.focusedWindow():move(units.upright50,  nil, true) end)
 hs.hotkey.bind(mash, '3', function() hs.window.focusedWindow():move(units.botleft50,  nil, true) end)
 hs.hotkey.bind(mash, "4", function() hs.window.focusedWindow():move(units.botright50, nil, true) end)
-hs.hotkey.bind(mash, ',', function() hs.window.focusedWindow():move(units.maximum,    nil, true) end)
-hs.hotkey.bind(mash, '.', function() hs.window.focusedWindow():move(units.center,    nil, true) end)
+hs.hotkey.bind(mash, ',', function() hs.window.focusedWindow():move(units.center,    nil, true) end)
+hs.hotkey.bind(mash, '.', function() hs.window.focusedWindow():move(units.maximum,    nil, true) end)
 
 hs.hotkey.bind(mash, '5', function() hs.window.focusedWindow():move(units.top33,    nil, true) end)
 hs.hotkey.bind(mash, '6', function() hs.window.focusedWindow():move(units.vmid33,    nil, true) end)
@@ -53,3 +54,6 @@ hs.hotkey.bind(mash, 'right', function() hs.window.focusedWindow():move(units.ri
 
 hs.hotkey.bind(mash, 'm', function() hs.window.focusedWindow():moveOneScreenEast(false, true) end)
 hs.hotkey.bind(mash, 'n', function() hs.window.focusedWindow():moveOneScreenWest(false, true) end)
+
+-- Somewhere along the way, cmd shift i became broadcast to all panes in all tabs, and not just the tab you are currently in
+hs.hotkey.bind({'cmd', 'shift'}, 'i', function() voice:speak("use alt") end)
