@@ -1,7 +1,11 @@
 [core]
 	editor = /usr/local/bin/vim
 	hooksPath = /Users/jimp/workspace/github.com/jim80net/git-hooks-core
-	excludesfile = ~/.gitignore
+	excludesfile = /home/jim/.gitignore
+	autocrlf = false
+	filemode = false
+	trustctime = false
+	checkStat = minimal
 [transfer]
 	fsckobjects = true
 [alias]
@@ -28,9 +32,9 @@
 [user]
 	email = jimp@scribd.com
 	name = Jim Park
-	signingkey = 5EF3A06134D3B1CA
+	#signingkey = 5EF3A06134D3B1CA
 [commit]
-	gpgsign = true
+	#gpgsign = true
 [url "git@git.lo:"]
 	insteadOf = https://git.lo/
 [url "git@github.com:"]
@@ -46,3 +50,5 @@
 	helper = osxkeychain
 [init]
 	defaultBranch = main
+[fetch]
+	prune = true
