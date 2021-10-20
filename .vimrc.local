@@ -6,3 +6,8 @@ vmap <Leader>a: :Tabularize /:\zs<CR>
 set nofixendofline
 let NERDTreeShowHidden=1
 
+set backupdir=~/.vim-backup
+
+let g:depolete#enable_at_startup = 0
+
+pythonx import pynvim
