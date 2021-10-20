@@ -28,6 +28,7 @@ tags
 ##
 # VSCode
 
+.vscode/
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
@@ -73,3 +74,5 @@ $RECYCLE.BIN/
 .envrc
 *.tmp
 tmp/
+
+terragrunt.hcl
