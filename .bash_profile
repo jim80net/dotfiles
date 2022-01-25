@@ -6,4 +6,7 @@ for i in $(ls $HOME/.bash_profile.d/*.sh); do source $i; done
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
-. /home/linuxbrew/.linuxbrew/opt/asdf/asdf.sh
+export PATH="/home/linuxbrew/.linuxbrew/opt/imagemagick@6/bin:$PATH"
+export PATH="/home/linuxbrew/.linuxbrew/opt/imagemagick@6/bin:$PATH"
+export PATH="/home/linuxbrew/.linuxbrew/opt/imagemagick@6/bin:$PATH"
+export PATH="/home/linuxbrew/.linuxbrew/opt/imagemagick@6/bin:$PATH"
