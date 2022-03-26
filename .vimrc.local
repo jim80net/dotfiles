@@ -6,3 +6,5 @@ vmap <Leader>a: :Tabularize /:\zs<CR>
 set nofixendofline
 let NERDTreeShowHidden=1
 
+let g:deoplete#enable_at_startup = 0
+
