@@ -19,12 +19,14 @@ Install:andUse("URLDispatcher",
                 {
                   config = {
                     url_patterns = {
+                      { "https?://.*%.atlassian%..*", WorkBrowser},
+                      { "https?://.*%.descript%.com", WorkBrowser},
                       { "https?://.*%.github%.com", WorkBrowser },
-                      { "https?://github%.com", WorkBrowser },
-                      { "https?://.*%.slack%.com", WorkBrowser },
-                      { "https?://.*%.notion%.so", WorkBrowser },
+                      { "https?://.*%.google%.com", WorkBrowser},
                       { "https?://.*%.krisp%.ai", WorkBrowser},
-                      { "https?://.*%.descript%.com", WorkBrowser}
+                      { "https?://.*%.notion%.so", WorkBrowser },
+                      { "https?://.*%.slack%.com", WorkBrowser },
+                      { "https?://github%.com", WorkBrowser },
 
                     },
                     url_redir_decoders = {
@@ -45,6 +47,18 @@ Install:andUse("URLDispatcher",
                   start = true,
                   -- loglevel = 'debug'
                 }
+)
+
+--clipboard history
+Install:andUse("ClipboardTool",
+  {
+    config = {
+      paste_on_select = true,
+    },
+    start = true,
+    hotkeys = {
+      toggle_clipboard = { { "cmd", "shift" }, "v" } },
+  }
 )
 
 -- window mashing
