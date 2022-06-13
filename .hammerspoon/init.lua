@@ -1,3 +1,67 @@
+hs.loadSpoon("SpoonInstall")
+spoon.SpoonInstall.use_syncinstall = true
+Install=spoon.SpoonInstall
+
+
+-- url redirection
+function appID(app)
+  return hs.application.infoForBundlePath(app)['CFBundleIdentifier']
+end
+
+safariBrowser = "com.apple.Safari"
+chromeBrowser = appID('/Applications/Google Chrome.app')
+braveBrowser = appID('/Applications/Brave Browser.app')
+
+DefaultBrowser = chromeBrowser
+WorkBrowser = braveBrowser
+
+Install:andUse("URLDispatcher",
+                {
+                  config = {
+                    url_patterns = {
+                      { "https?://.*%.atlassian%..*", WorkBrowser},
+                      { "https?://.*%.descript%.com", WorkBrowser},
+                      { "https?://.*%.github%.com", WorkBrowser },
+                      { "https?://.*%.google%.com", WorkBrowser},
+                      { "https?://.*%.krisp%.ai", WorkBrowser},
+                      { "https?://.*%.notion%.so", WorkBrowser },
+                      { "https?://.*%.slack%.com", WorkBrowser },
+                      { "https?://github%.com", WorkBrowser },
+
+                    },
+                    url_redir_decoders = {
+-- This breaks some things
+--                     { "Fix macOS double-encoding weirdness",
+--                       "%%25(%x%x)",   -- This is %xx encoded, the % gets converted to %25
+--                       "%%%1", true },
+                      -- { "Office 365 safelinks check",
+                      --   "https://eur03.safelinks.protection.outlook.com/(.*)\\?url=(.-)&.*",
+                      --   "%2" },
+                      -- { "MS Teams URLs",
+                      --   "(https://teams.microsoft.com.*)", "msteams:%1", true },
+                      --  { "Fix broken Preview anchor URLs",
+                      --  "%%23", "#", false, "Preview" },
+                    },
+                    default_handler = DefaultBrowser
+                  },
+                  start = true,
+                  -- loglevel = 'debug'
+                }
+)
+
+--clipboard history
+Install:andUse("ClipboardTool",
+  {
+    config = {
+      paste_on_select = true,
+    },
+    start = true,
+    hotkeys = {
+      toggle_clipboard = { { "cmd", "shift" }, "v" } },
+  }
+)
+
+-- window mashing
 hs.window.animationDuration = 0
 units = {
   left33        = { x = 0.00, y = 0.00, w = 0.33, h = 1.00 },
