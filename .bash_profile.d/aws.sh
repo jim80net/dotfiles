@@ -16,19 +16,28 @@ export aws_refresh_asg_from_instance_id
 
 
 function aws_tasks_from_service() {
-  aws ecs list-tasks --service-name ${1:?} --cluster monolith-ecs-staging --query 'taskArns[]' --output text
+  aws ecs list-tasks --service-name ${1:?} --cluster monolith-ecs-production --query 'taskArns[]' --output text
 }
 export aws_tasks_from_service
 
+function aws_ecs_ip_addresses_from_service() {
+   for i in $(aws_tasks_from_service ${1:?}); do
+      aws ecs describe-tasks --cluster monolith-ecs-production --tasks $i --query 'tasks[0].attachments[0].details[?name==`privateIPv4Address`].value' --output text
+   done
+}
+
+export aws_ecs_ip_addresses_from_service
+
 function aws_container_instances_from_service() {
-   aws ecs describe-tasks --cluster monolith-ecs-staging --tasks $(aws_tasks_from_service ${1:?}) --query 'tasks[].containerInstanceArn' --output text
+   aws ecs describe-tasks --cluster monolith-ecs-production --tasks $(aws_tasks_from_service ${1:?}) --query 'tasks[].containerInstanceArn' --output text
 }
 export aws_container_instances_from_service
 
 function aws_ecs_instance_id_from_container_instance() {
-   aws ecs describe-container-instances --cluster monolith-ecs-staging --container-instances  ${1:?} --query "containerInstances[].ec2InstanceId" --output text
+   aws ecs describe-container-instances --cluster monolith-ecs-production --container-instances  ${1:?} --query "containerInstances[].ec2InstanceId" --output text
 }
 export aws_ecs_instance_id_from_container_instance
+
 
 function aws_ec2_ip_address_from_instance_id() {
     aws ec2 describe-instances --instance-ids ${1:?} --query "Reservations[].Instances[].PrivateIpAddress" --output text
