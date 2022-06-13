@@ -1,5 +1,4 @@
 [core]
-	editor = /usr/local/bin/code --wait
 	hooksPath = /Users/jimp/workspace/github.com/jim80net/git-hooks-core
 	excludesfile = /home/jim/.gitignore
 	autocrlf = false
