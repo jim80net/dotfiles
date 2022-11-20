@@ -8,7 +8,6 @@
 [transfer]
 	fsckobjects = true
 [alias]
-	gst = git
 	st = status
 	di = diff
 	co = checkout
@@ -27,7 +26,6 @@
 	squash = commit --squash
 	unstage = reset HEAD
 	rum = rebase master@{u}
-	gst = git
 [user]
 	email = jimp@scribd.com
 	name = Jim Park
@@ -45,6 +43,7 @@
 	clean = git-lfs clean -- %f
 [pull]
 	ff = only
+	twohead = ort
 [credential]
 	helper = osxkeychain
 [init]
