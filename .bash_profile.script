@@ -1,0 +1,2 @@
+export LOGGING_ENABLED=true
+source ~/.bash_profile
