@@ -11,8 +11,10 @@ end
 safariBrowser = "com.apple.Safari"
 chromeBrowser = appID('/Applications/Google Chrome.app')
 braveBrowser = appID('/Applications/Brave Browser.app')
+edgeBrowser = appID('/Applications/Microsoft Edge.app')
+arcBrowser = 'company.thebrowser.Browser'
 
-DefaultBrowser = safariBrowser
+DefaultBrowser = arcBrowser
 WorkBrowser = braveBrowser
 
 Install:andUse("URLDispatcher",
@@ -23,10 +25,12 @@ Install:andUse("URLDispatcher",
                       { "https?://.*%.descript%.com", WorkBrowser},
                       { "https?://.*%.github%.com", WorkBrowser },
                       { "https?://.*%.google%.com", WorkBrowser},
-                      { "https?://.*%.notion%.so", WorkBrowser },
-                      { "https?://.*%.slack%.com", WorkBrowser },
+                      { "https?://.*%.notion%.so", arcBrowser },
                       { "https?://github%.com", WorkBrowser },
                       { "https?://.*scribd.*", WorkBrowser },
+                      { "https?://device%.sso%.us-east-2%.amazonaws%.com", WorkBrowser},
+                      { "https?://.*%.krisp%.ai", WorkBrowser },
+                      { "https?://app.datadoghq.com", WorkBrowser }
                     },
                     url_redir_decoders = {
 -- This breaks some things
