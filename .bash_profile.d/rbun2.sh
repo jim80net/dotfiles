@@ -1,7 +1,9 @@
 # Utility scripts for rbun2 jumpbox
-function start_rbun2() (
-    ORIGINAL_AWS_PROFILE=$AWS_PROFILE
-    AWS_PROFILE=ramtank_com
+function start_rbun2() {
+    export ORIGINAL_AWS_PROFILE=$AWS_PROFILE
+    export ORIGINAL_AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION
+    export AWS_PROFILE=ramtank_com
+    export AWS_DEFAULT_REGION=us-east-2
     aws ec2 start-instances --instance-ids i-09a99c3dbd0c792cb
 
     # Specify your security group ID
@@ -36,8 +38,9 @@ function start_rbun2() (
     aws ec2 authorize-security-group-ingress --group-id $SG_ID --protocol udp --port 60000-61000 --cidr $MY_IP/32
 
     # Restore original AWS profile. Probably redundant, given this is a subshell, but jic.
-    AWS_PROFILE=$ORIGINAL_AWS_PROFILE
-)
+    export AWS_PROFILE=$ORIGINAL_AWS_PROFILE
+    export AWS_DEFAULT_REGION=$ORIGINAL_AWS_DEFAULT_REGION
+}
 
 export -f start_rbun2
 
