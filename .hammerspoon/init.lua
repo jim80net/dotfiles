@@ -30,7 +30,8 @@ Install:andUse("URLDispatcher",
                       { "https?://.*scribd.*", WorkBrowser },
                       { "https?://device%.sso%.us-east-2%.amazonaws%.com", WorkBrowser},
                       { "https?://.*%.krisp%.ai", WorkBrowser },
-                      { "https?://app.datadoghq.com", WorkBrowser }
+                      { "https?://app.datadoghq.com", WorkBrowser },
+                      { "https?://.*%.fastly%.com", WorkBrowser }
                     },
                     url_redir_decoders = {
 -- This breaks some things
