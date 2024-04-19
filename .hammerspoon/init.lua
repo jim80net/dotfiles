@@ -103,7 +103,7 @@ hs.hotkey.bind(mash, '=', function() hs.window.focusedWindow():move(units.maximu
 hs.hotkey.bind(mash, 'y', function() hs.window.focusedWindow():move(units.left33,    nil, true) end)
 hs.hotkey.bind(mash, 'u', function() hs.window.focusedWindow():move(units.bot33,    nil, true) end)
 hs.hotkey.bind(mash, 'i', function() hs.window.focusedWindow():move(units.top33,    nil, true) end)
-hs.hotkey.bind(mash, 'p', function() hs.window.focusedWindow():move(units.right33,    nil, true) end)
+hs.hotkey.bind(mash, 'o', function() hs.window.focusedWindow():move(units.right33,    nil, true) end)
 
 hs.hotkey.bind(mash, 'h', function() hs.window.focusedWindow():move(units.left50,    nil, true) end)
 hs.hotkey.bind(mash, 'j', function() hs.window.focusedWindow():move(units.bot50,    nil, true) end)
