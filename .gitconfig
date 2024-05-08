@@ -27,11 +27,11 @@
 	unstage = reset HEAD
 	rum = rebase master@{u}
 [user]
-	email = jimp@scribd.com
+	email = parks@tesla.com
 	name = Jim Park
-	#signingkey = 5EF3A06134D3B1CA
+	signingkey = 340C37448CC82A59DF0D6AA44273A4BCF7EBAB91
 [commit]
-	#gpgsign = true
+	gpgsign = true
 [url "git@git.lo:"]
 	insteadOf = https://git.lo/
 [url "git@github.com:"]
@@ -50,3 +50,5 @@
 	defaultBranch = main
 [fetch]
 	prune = true
+[url "ssh://git@github.tesla.com/"]
+	insteadOf = https://github.tesla.com/
