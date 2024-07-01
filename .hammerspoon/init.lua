@@ -93,6 +93,14 @@ units = {
   upright50     = { x = 0.50, y = 0.00, w = 0.50, h = 0.50 },
   botleft50     = { x = 0.00, y = 0.50, w = 0.50, h = 0.50 },
   botright50    = { x = 0.50, y = 0.50, w = 0.50, h = 0.50 },
+  upleft66      = { x = 0.00, y = 0.00, w = 0.66, h = 0.66 },
+  upright66     = { x = 0.34, y = 0.00, w = 0.66, h = 0.66 },
+  botleft66     = { x = 0.00, y = 0.34, w = 0.66, h = 0.66 },
+  botright66    = { x = 0.34, y = 0.34, w = 0.66, h = 0.66 },
+  upleft90      = { x = 0.00, y = 0.00, w = 0.90, h = 0.90 },
+  upright90     = { x = 0.10, y = 0.00, w = 0.90, h = 0.90 },
+  botleft90     = { x = 0.00, y = 0.10, w = 0.90, h = 0.90 },
+  botright90    = { x = 0.10, y = 0.10, w = 0.90, h = 0.90 },
   left33        = { x = 0.00, y = 0.00, w = 0.33, h = 1.00 },
   bot33         = { x = 0.00, y = 0.66, w = 1.00, h = 0.34 },
   top33         = { x = 0.00, y = 0.00, w = 1.00, h = 0.33 },
@@ -116,6 +124,16 @@ hs.hotkey.bind(mash, '1', function() hs.window.focusedWindow():move(units.upleft
 hs.hotkey.bind(mash, '2', function() hs.window.focusedWindow():move(units.upright50,  nil, true) end)
 hs.hotkey.bind(mash, '3', function() hs.window.focusedWindow():move(units.botleft50,  nil, true) end)
 hs.hotkey.bind(mash, "4", function() hs.window.focusedWindow():move(units.botright50, nil, true) end)
+
+hs.hotkey.bind(mash, 'q', function() hs.window.focusedWindow():move(units.upleft66,   nil, true) end)
+hs.hotkey.bind(mash, 'w', function() hs.window.focusedWindow():move(units.upright66,  nil, true) end)
+hs.hotkey.bind(mash, 'e', function() hs.window.focusedWindow():move(units.botleft66,  nil, true) end)
+hs.hotkey.bind(mash, "r", function() hs.window.focusedWindow():move(units.botright66, nil, true) end)
+
+hs.hotkey.bind(mash, 'a', function() hs.window.focusedWindow():move(units.upleft90,   nil, true) end)
+hs.hotkey.bind(mash, 's', function() hs.window.focusedWindow():move(units.upright90,  nil, true) end)
+hs.hotkey.bind(mash, 'd', function() hs.window.focusedWindow():move(units.botleft90,  nil, true) end)
+hs.hotkey.bind(mash, "f", function() hs.window.focusedWindow():move(units.botright90, nil, true) end)
 
 hs.hotkey.bind(mash, '0', function() hs.window.focusedWindow():move(units.center,    nil, true) end)
 hs.hotkey.bind(mash, '-', function() hs.window.focusedWindow():move(units.centerwide,    nil, true) end)
@@ -143,4 +161,5 @@ hs.hotkey.bind(mash, 'up', function() hs.window.focusedWindow():moveOneScreenNor
 hs.hotkey.bind(mash, 'right', function() hs.window.focusedWindow():moveOneScreenEast(false, true) end)
 
 -- Somewhere along the way, cmd shift i became broadcast to all panes in all tabs, and not just the tab you are currently in
-hs.hotkey.bind({'cmd', 'shift'}, 'i', function() voice:speak("use alt") end)
+-- hs.hotkey.bind({'cmd', 'shift'}, 'i', function() voice:speak("use alt") end)
+
