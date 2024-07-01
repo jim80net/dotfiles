@@ -65,6 +65,27 @@ Install:andUse("ClipboardTool",
   }
 )
 
+-- Function to add query parameter to Teams URLs
+local function addQueryParam(url)
+  local separator = url:find("?") and "&" or "?"
+  return url .. separator .. "clipboardrewritesuccess=true"
+end
+
+-- Monitor clipboard for teams urls and rewrite them to eliminate the extra noise on paste.
+local pasteboardWatcher = hs.pasteboard.watcher.new(function()
+  local clipboardContents = hs.pasteboard.getContents()
+  if clipboardContents then
+      if clipboardContents:match("^https://teams%.microsoft%.com/") and not clipboardContents:match("[&?]clipboardrewritesuccess=true") then
+          local modifiedURL = addQueryParam(clipboardContents)
+          hs.pasteboard.setContents(modifiedURL)
+      end
+  end
+end)
+
+-- Start the clipboard watcher
+pasteboardWatcher:start()
+
+
 -- window mashing
 hs.window.animationDuration = 0
 units = {
