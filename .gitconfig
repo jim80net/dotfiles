@@ -52,3 +52,5 @@
 	prune = true
 [url "ssh://git@github.tesla.com/"]
 	insteadOf = https://github.tesla.com/
+[rebase]
+	autosquash = true
