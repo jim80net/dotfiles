@@ -20,23 +20,28 @@ expect {
 
 if {[llength $arguments] == 0} {
   spawn ssh $target
+  expect {
+      "assword:" {
+          send "$password\r"
+          exp_continue
+      }
+      -re {(\[?).*@.*(\]?)[$#]} {
+          log_user 1
+          interact
+      }
+  }
 } else {
   spawn ssh -T $target $arguments
+  expect {
+      "assword:" {
+          send "$password\r"
+          exp_continue
+      }
+      -re {^(?!\s*$)\s*(.+)\s*} {
+          puts -nonewline "$expect_out(1,string)"
+	  exp_continue
+      }
+  }
 }
 
-expect {
-    "assword:" {
-        send "$password\r"
-        log_user 1
-        exp_continue
-    }
-    -re {(\[?).*@.*(\]?)[$#]} {
-        log_user 1
-        interact
-    }
-    timeout {
-        puts "Timeout or unexpected prompt after switching user."
-        exit 1
-    }
-}
 
