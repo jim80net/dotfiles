@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+tmux new-session -d -s multiplex
+tmux select-window -t multiplex:0
+
+INDEX=0
+for i in $($SCRIPT_DIR/all_nodes)
+do
+    tmux split-window -h
+    tmux select-pane -t $INDEX
+    tmux send-keys "ssh $i" Enter
+    ((INDEX+=1))
+done
+tmux select-layout tiled
+
+tmux set-window-option synchronize-panes
+
+#tmux send-keys '# WARNING: Synchronize-panes on. Type \`C-b M-I\` to turn off.' Enter
+
+tmux attach-session -t multiplex

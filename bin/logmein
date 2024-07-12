@@ -1,0 +1,42 @@
+#!/usr/bin/expect
+
+set target [lindex $argv 0]
+set arguments [join [lrange $argv 1 end] " "]
+
+set timeout 20
+
+# Retrieve the SSH password from keychain or password manager
+# set the password with `security add-generic-password -a $USER -s "SSH_LOGIN_PASSWORD" -w`
+set password [exec security find-generic-password -a $env(USER) -s "SSH_LOGIN_PASSWORD" -w]
+
+log_user 0
+# Disable MOTD
+spawn ssh -T $target touch .hushlogin
+expect {
+    "assword:" {
+        send "$password\r"
+    }
+}
+
+if {[llength $arguments] == 0} {
+  spawn ssh $target
+} else {
+  spawn ssh -T $target $arguments
+}
+
+expect {
+    "assword:" {
+        send "$password\r"
+        log_user 1
+        exp_continue
+    }
+    -re {(\[?).*@.*(\]?)[$#]} {
+        log_user 1
+        interact
+    }
+    timeout {
+        puts "Timeout or unexpected prompt after switching user."
+        exit 1
+    }
+}
+
