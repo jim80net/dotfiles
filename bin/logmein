@@ -11,22 +11,22 @@ set password [exec security find-generic-password -a $env(USER) -s "SSH_LOGIN_PA
 
 log_user 0
 # Disable MOTD
-spawn ssh -T $target touch .hushlogin
-expect {
-    "assword:" {
-        send "$password\r"
-    }
-}
+# spawn ssh -T $target touch .hushlogin
+# expect {
+#     "assword:" {
+#         send "$password\r"
+#     }
+# }
 
 if {[llength $arguments] == 0} {
   spawn ssh $target
   expect {
       "assword:" {
           send "$password\r"
+          log_user 1
           exp_continue
       }
-      -re {(\[?).*@.*(\]?)[$#]} {
-          log_user 1
+      -re {(\[?).*@.*(\]?).*[$#]} {
           interact
       }
   }
