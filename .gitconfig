@@ -1,6 +1,6 @@
 [core]
-	hooksPath = /home/jim/workspace/github.com/jim80net/git-hooks-core
-	excludesfile = /home/jim/.gitignore
+	hooksPath = ~/workspace/github.com/jim80net/git-hooks-core
+	excludesfile = ~/.gitignore
 	autocrlf = false
 	filemode = false
 	trustctime = false
