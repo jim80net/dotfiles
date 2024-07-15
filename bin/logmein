@@ -38,7 +38,7 @@ if {[llength $arguments] == 0} {
           exp_continue
       }
       -re {^(?!\s*$)\s*(.+)\s*} {
-          puts -nonewline "$expect_out(1,string)"
+          puts [string trim "$expect_out(1,string)"]
 	  exp_continue
       }
   }
