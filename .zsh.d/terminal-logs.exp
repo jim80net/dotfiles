@@ -1,0 +1,17 @@
+#!/usr/bin/expect
+
+if {[info exists env(SCRIPT)]} {
+	puts ""
+} else {
+	set timestamp  [exec date  +%Y-%m-%dT%H:%MZ]
+	log_user 0
+	spawn script -aFr $env(HOME)/terminal-logs/$timestamp.log
+	expect "❯"
+	send "source ~/.zprofile\r"
+	expect "❯"
+	send [exec $env(HOME)/dotfiles/bin/warpify_subshell]
+	send "\r"
+	log_user 1
+	interact
+}
+
