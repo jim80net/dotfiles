@@ -58,6 +58,8 @@ Install:andUse("ClipboardTool",
   {
     config = {
       paste_on_select = true,
+      hist_size = 30,
+      
     },
     start = true,
     hotkeys = {
@@ -94,11 +96,13 @@ units = {
   upright50     = { x = 0.50, y = 0.00, w = 0.50, h = 0.50 },
   botleft50     = { x = 0.00, y = 0.50, w = 0.50, h = 0.50 },
   botright50    = { x = 0.50, y = 0.50, w = 0.50, h = 0.50 },
-  upleft76      = { x = 0.00, y = 0.00, w = 0.76, h = 0.76 },
+
+  upleft76      = { x = 0.00, y = 0.00, w = 0.74, h = 0.76 },
   upright76     = { x = 0.26, y = 0.02, w = 0.74, h = 0.76 },
   botleft76     = { x = 0.00, y = 0.26, w = 0.76, h = 0.74 },
   botright76    = { x = 0.24, y = 0.24, w = 0.76, h = 0.76 },
-  upleft86      = { x = 0.00, y = 0.00, w = 0.86, h = 0.86 },
+
+  upleft86      = { x = 0.00, y = 0.00, w = 0.84, h = 0.86 },
   upright86     = { x = 0.16, y = 0.02, w = 0.84, h = 0.86 },
   botleft86     = { x = 0.00, y = 0.16, w = 0.86, h = 0.84 },
   botright86    = { x = 0.14, y = 0.14, w = 0.86, h = 0.86 },
@@ -107,10 +111,12 @@ units = {
   bot50         = { x = 0.00, y = 0.50, w = 1.00, h = 0.50 },
   top50         = { x = 0.00, y = 0.00, w = 1.00, h = 0.50 },
   right50       = { x = 0.50, y = 0.00, w = 0.50, h = 1.00 },
+
   left76        = { x = 0.00, y = 0.00, w = 0.76, h = 1.00 },
   bot76         = { x = 0.00, y = 0.24, w = 1.00, h = 0.76 },
   top76         = { x = 0.00, y = 0.00, w = 1.00, h = 0.76 },
   right76       = { x = 0.24, y = 0.00, w = 0.76, h = 1.00 },
+
   left86        = { x = 0.00, y = 0.00, w = 0.86, h = 1.00 },
   bot86         = { x = 0.00, y = 0.14, w = 1.00, h = 0.86 },
   top86         = { x = 0.00, y = 0.00, w = 1.00, h = 0.86 },
@@ -164,5 +170,15 @@ hs.hotkey.bind(mash, 'up', function() hs.window.focusedWindow():moveOneScreenNor
 hs.hotkey.bind(mash, 'right', function() hs.window.focusedWindow():moveOneScreenEast(false, true) end)
 
 -- Somewhere along the way, cmd shift i became broadcast to all panes in all tabs, and not just the tab you are currently in
-hs.hotkey.bind({'cmd', 'shift'}, 'i', function() voice:speak("use alt") end)
+hs.hotkey.bind({'cmd', 'shift'}, 'i', function() voice:speak("use option") end)
 
+-- 
+hs.hotkey.bind({'cmd', 'ctrl'}, 'i', function() hs.eventtap.keyStrokes("https://issues.teslamotors.com/browse/") end)
+hs.hotkey.bind({'cmd', 'ctrl'}, 'p', function() hs.eventtap.keyStrokes("# Description\r\rasdf\r\r# Deployment Steps\r\r- [ ] Merge\r\r\r# References\r\r[JIRALINK](https://issues.teslamotors.com/browse/)") end)
+
+
+s1 = hs.screen.allScreens()[1]
+s2 = hs.screen.allScreens()[2]
+s3 = hs.screen.allScreens()[3]
+
+-- Get application names using > hs.fnutils.each(hs.application.runningApplications(), function(app) print(app:title()) end)
