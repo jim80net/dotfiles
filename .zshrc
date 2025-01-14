@@ -73,7 +73,8 @@ set_iterm_title() {
 			title="$repo_name [detached/$commit] - $relative_path"
 		fi
 	else
-		title="$PWD"
+		local shortpath=$( pwd | sed -e's/\/Users\/parks/~/' )
+		title="$shortpath"
 	fi
 
 	echo -ne "\e]1;${title}\a"
